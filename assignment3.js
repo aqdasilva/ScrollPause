@@ -1,5 +1,5 @@
-// 2. This code loads the IFrame Player API code asynchronously.
-//play when video is visible
+// loads the IFrame Player API code
+//if video is in view it plays
 var videos = document.getElementsByTagName("iframe"), fraction = 0.8;
 
 function checkScroll() {
@@ -46,7 +46,7 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// 3. This function creates an <iframe> (and YouTube player) after the API code downloads.
+// func  creates <iframe> &youtube player after the API code gets downloaded
 var player;
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -63,18 +63,17 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-// 4. The API will call this function when the video player is ready.
+//API will call this function when the video player is ready.
 function onPlayerReady(event) {
     window.addEventListener('scroll', checkScroll, false);
     window.addEventListener('resize', checkScroll, false);
 
-    //check at least once so you don't have to wait for scrolling for the    video to start
+    //checks here
     window.addEventListener('load', checkScroll, false);
 };
 
-// 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
+//API calls this func when the player's state changes
+//func indicates that when playing a video (state=1),
 
 var done = false;
 
